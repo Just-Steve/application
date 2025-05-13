@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Internship Application Letter</title>
+    <title>Industrial Internship Application</title>
     <!-- Include html2pdf.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIP1XcVie80Nfmf6bTpqLaky6dev0Jt1JIXgwwOLRm9ZzKCx08jccv0g0jy5fdqXfqk52G5PpqtTvZK6SPkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
       :root {
         --primary: #8cbeb2;
@@ -24,19 +24,18 @@
         line-height: 1.6;
       }
       .container {
-        max-width: 900px;
+        max-width: 800px;
         margin: 40px auto;
         background: #fff;
         padding: 40px;
         border-radius: 12px;
         box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease-in-out;
-        position: relative;
+        transition: transform 0.3s ease;
       }
       .container:hover {
         transform: translateY(-3px);
       }
-      h1 {
+      header h1 {
         font-size: 2rem;
         color: var(--dark);
         margin-bottom: 20px;
@@ -45,13 +44,13 @@
         text-align: center;
       }
       .download-btn {
-        position: absolute;
-        top: 30px;
-        right: 30px;
+        position: fixed;
+        top: 20px;
+        right: 20px;
         background: var(--accent);
         color: #fff;
         border: none;
-        padding: 0.6rem 1rem;
+        padding: 0.5rem 1rem;
         border-radius: 6px;
         font-size: 0.9rem;
         font-weight: bold;
@@ -67,116 +66,92 @@
         margin-bottom: 20px;
         padding: 15px;
         border-radius: 8px;
-        transition: box-shadow 0.3s, transform 0.3s;
         background-color: #fff;
         border-left: 4px solid var(--primary);
+        transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
       }
       .section:hover {
         background-color: var(--light-bg);
         box-shadow: 0 0 15px rgba(140, 190, 178, 0.5);
         transform: translateX(4px);
       }
-      .section p {
-        margin-bottom: 12px;
-      }
       .highlight {
         color: var(--primary);
         font-weight: bold;
       }
-      .contact-info {
+      address {
         margin-top: 20px;
+        font-style: normal;
       }
-      .contact-info a {
+      address a {
         color: #005a87;
         text-decoration: none;
         font-weight: bold;
         transition: color 0.3s ease;
       }
-      .contact-info a:hover {
+      address a:hover {
         color: #00a2c7;
         text-decoration: underline;
+      }
+      @media print {
+        body { background: #fff; }
+        .download-btn { display: none; }
+        .container { box-shadow: none; }
       }
     </style>
   </head>
   <body>
-    <div class="container" id="letter">
-      <button class="download-btn" id="downloadBtn">Download PDF</button>
-      <h1>Application for Industrial Internshipgit add .                     # Stage all changes
-git commit -m "Your message"  # Commit with a message
-git push origin main          # Push to the remote repository
-</h1>
+    <button class="download-btn" aria-label="Download PDF" id="downloadBtn">Download PDF</button>
+    <div class="container" id="letter" role="document">
+      <header>
+        <h1>Application for Industrial Internship</h1>
+      </header>
+      <main>
+        <section class="section">
+          <p>Dear Hiring Manager,</p>
 
-      <div class="section">
-        <p>Dear Hiring Manager,</p>
+          <p>
+            I am writing to express my interest in an industrial internship opportunity at your esteemed organization. My name is <span class="highlight">Stephen Gichuhi</span>, a dedicated student pursuing a Diploma in Computer Science at Zetech University, Nairobi, with an expected graduation date of December 2025.
+          </p>
 
-        <p>
-          I am writing to express my interest in an industrial internship opportunity
-          at your esteemed organization. My name is <span class="highlight">Stephen Gichuhi</span>, a
-          passionate and dedicated student pursuing a Diploma in Computer Science at
-          Zetech University, Nairobi, with an expected graduation date of December 2025.
-        </p>
+          <p>
+            Throughout my academic journey, I have gained a solid foundation in Software Engineering, Computer Networks, Database Management, Operating Systems, and Systems Analysis and Design. I have practical experience building web applications using HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB, complemented by Tailwind CSS for frontend styling and JWT-based authentication.
+          </p>
 
-        <p>
-          Throughout my academic journey, I have gained a solid foundation in key areas
-          such as Software Engineering, Computer Networks, Database Management,
-          Operating Systems, and Systems Analysis and Design. My coursework has been
-          complemented by practical experience in building web applications using HTML,
-          CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB. I am also
-          proficient in Tailwind CSS for frontend design and have a working knowledge of
-          RESTful API development and authentication mechanisms using JWT.
-        </p>
+          <p>
+            I have completed training programs including Cisco IT Essentials (Cisco Networking Academy), Python for Beginners (Coursera), and Fullstack Web Development (freeCodeCamp & Udemy), which enhanced my collaborative and problem-solving abilities.
+          </p>
 
-        <p>
-          In addition to my technical skills, I have completed several training programs
-          including Cisco IT Essentials from Cisco Networking Academy, Python for
-          Beginners via Coursera, and a Web Fullstack Development course through
-          freeCodeCamp and Udemy. These experiences have equipped me with not only
-          practical coding skills but also the ability to work collaboratively,
-          communicate effectively, and adapt to new technologies.
-        </p>
+          <p>
+            I am eager to apply my skills in a real-world setting and contribute meaningfully to your projects, especially in full-stack development and system support. An internship at your organization would be an invaluable opportunity for professional growth and learning from experienced industry practitioners.
+          </p>
 
-        <p>
-          I am eager to apply my knowledge in a real-world setting and gain hands-on
-          experience in the tech industry. An attachment at your organization would
-          provide a valuable opportunity for me to learn from experienced professionals
-          and contribute meaningfully to your projects. I am especially excited about the
-          possibility of working in environments involving full-stack development and
-          system support.
-        </p>
+          <p>
+            Thank you for considering my application. I look forward to the possibility of contributing to your team and discussing how my background aligns with your goals.
+          </p>
 
-        <p>
-          I am confident that my academic background, technical training, and passion for
-          technology make me a suitable candidate for an industrial attachment. I would
-          be grateful for the opportunity to discuss how my skills and enthusiasm align
-          with your team's goals.
-        </p>
-
-        <p>
-          Thank you for considering my application. I look forward to the possibility of
-          contributing to your organization.
-        </p>
-
-        <div class="contact-info">
-          Sincerely,<br />
-          Stephen Gichuhi<br />
-          📞 0759 794 221<br />
-          📧 <a href="mailto:stevegichuhi03@gmail.com">stevegichuhi03@gmail.com</a><br />
-          📍 Nairobi, Kenya
-        </div>
-      </div>
+          <address>
+            Sincerely,<br />
+            <span class="highlight">Stephen Gichuhi</span><br />
+            📞 <a href="tel:+254759794221">+254 759 794 221</a><br />
+            📧 <a href="mailto:stevegichuhi03@gmail.com">stevegichuhi03@gmail.com</a><br />
+            📍 Nairobi, Kenya
+          </address>
+        </section>
+      </main>
     </div>
 
     <script>
       document.getElementById('downloadBtn').addEventListener('click', function() {
         const element = document.getElementById('letter');
-        const options = {
+        const opt = {
           margin:       0.5,
           filename:     'Stephen_Gichuhi_Internship_Letter.pdf',
           image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2 },
+          html2canvas:  { scale: 2, useCORS: true },
           jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
         };
-        html2pdf().set(options).from(element).save();
+        html2pdf().set(opt).from(element).save();
       });
     </script>
   </body>
