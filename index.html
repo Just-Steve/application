@@ -3,156 +3,940 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Industrial Internship Application</title>
+    <title>Stephen Gichuhi - Industrial Internship Application</title>
     <!-- Include html2pdf.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js" integrity="sha512-YcsIP1XcVie80Nfmf6bTpqLaky6dev0Jt1JIXgwwOLRm9ZzKCx08jccv0g0jy5fdqXfqk52G5PpqtTvZK6SPkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Include Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" integrity="sha512-fD9DI5bZwQxOi7MhYWnnNPlvXdp/2Pj3XSTRrFs5FQa4mizyGLnJcN6tuvUS6LbmgN1ut+XGSABKvjN0H6Aoow==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
       :root {
-        --primary: #8cbeb2;
-        --accent: #4db6ac;
+        --primary: #3498db;
+        --primary-dark: #2980b9;
+        --secondary: #2ecc71;
+        --accent: #e74c3c;
         --dark: #2c3e50;
-        --light-bg: #fafafa;
+        --light: #ecf0f1;
+        --light-bg: #f9f9f9;
         --text: #333;
+        --text-light: #7f8c8d;
+        --border-radius: 8px;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
-      * { box-sizing: border-box; }
-      body {
+      
+      * { 
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
+      }
+      
+      body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-color: #f4f4f4;
+        background-color: var(--light-bg);
         color: var(--text);
         line-height: 1.6;
+        padding-bottom: 60px;
       }
+      
+      .top-bar {
+        background: var(--dark);
+        color: white;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: var(--shadow);
+      }
+      
+      .top-bar h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      
+      .action-buttons {
+        display: flex;
+        gap: 10px;
+      }
+      
+      .btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .btn:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+      
+      .btn-secondary {
+        background: var(--secondary);
+      }
+      
+      .btn-secondary:hover {
+        background: #27ae60;
+      }
+      
+      .btn-accent {
+        background: var(--accent);
+      }
+      
+      .btn-accent:hover {
+        background: #c0392b;
+      }
+      
       .container {
         max-width: 800px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 40px;
-        border-radius: 12px;
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease;
+        margin: 30px auto;
+        background: white;
+        border-radius: var(--border-radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
       }
-      .container:hover {
-        transform: translateY(-3px);
-      }
-      header h1 {
-        font-size: 2rem;
-        color: var(--dark);
-        margin-bottom: 20px;
-        border-bottom: 2px solid var(--primary);
-        padding-bottom: 10px;
+      
+      header {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 30px 40px;
         text-align: center;
       }
-      .download-btn {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
+      
+      header h1 {
+        margin-bottom: 10px;
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        opacity: 0.9;
+        font-size: 1.1rem;
+      }
+      
+      .profile-summary {
+        display: flex;
+        align-items: center;
+        padding: 20px 40px;
+        background: var(--light);
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .profile-pic {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background-color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
         font-weight: bold;
+        margin-right: 20px;
+        border: 3px solid white;
+        box-shadow: var(--shadow);
+      }
+      
+      .profile-details h2 {
+        color: var(--dark);
+        margin-bottom: 5px;
+      }
+      
+      .profile-details p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+      }
+      
+      .tab-navigation {
+        display: flex;
+        background: var(--light);
+        border-bottom: 1px solid #ddd;
+      }
+      
+      .tab-btn {
+        padding: 12px 20px;
+        background: none;
+        border: none;
         cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-        transition: background 0.3s, transform 0.3s;
+        font-weight: 600;
+        color: var(--text-light);
+        transition: all 0.3s;
+        position: relative;
       }
-      .download-btn:hover {
+      
+      .tab-btn.active {
+        color: var(--primary);
+      }
+      
+      .tab-btn.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
         background: var(--primary);
-        transform: scale(1.05);
       }
-      .section {
+      
+      .tab-btn:hover {
+        color: var(--primary);
+        background: rgba(236, 240, 241, 0.5);
+      }
+      
+      /* New navigation for quick section jumps */
+      .quick-nav {
+        padding: 10px 0;
+        background: var(--light);
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        border-top: 1px solid #ddd;
+      }
+      
+      .quick-nav a {
+        color: var(--text);
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: var(--border-radius);
+        font-size: 0.9rem;
+        transition: all 0.3s;
+      }
+      
+      .quick-nav a:hover {
+        background: var(--primary);
+        color: white;
+      }
+      
+      .section-anchor {
+        scroll-margin-top: 70px;
+      }
+      
+      .content-section {
+        padding: 30px 40px;
+      }
+      
+      /* New style for PDF output */
+      .tab-content.for-pdf {
+        display: block !important;
+        page-break-before: always;
+      }
+      
+      .tab-content.for-pdf:first-of-type {
+        page-break-before: avoid;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+        color: var(--dark);
         margin-bottom: 20px;
-        padding: 15px;
-        border-radius: 8px;
-        background-color: #fff;
-        border-left: 4px solid var(--primary);
-        transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--light);
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
-      .section:hover {
-        background-color: var(--light-bg);
-        box-shadow: 0 0 15px rgba(140, 190, 178, 0.5);
-        transform: translateX(4px);
+      
+      .section-title i {
+        color: var(--primary);
       }
+      
       .highlight {
         color: var(--primary);
-        font-weight: bold;
+        font-weight: 600;
       }
-      address {
-        margin-top: 20px;
-        font-style: normal;
+      
+      p {
+        margin-bottom: 15px;
       }
-      address a {
-        color: #005a87;
+      
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      
+      .skill-item {
+        background: var(--light-bg);
+        padding: 12px 15px;
+        border-radius: var(--border-radius);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: all 0.3s;
+      }
+      
+      .skill-item:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+        background: white;
+      }
+      
+      .skill-icon {
+        background: var(--primary);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+      }
+      
+      .training-item {
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--light);
+      }
+      
+      .training-item:last-child {
+        border-bottom: none;
+      }
+      
+      .training-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+      
+      .training-title {
+        font-weight: 600;
+        color: var(--dark);
+      }
+      
+      .training-provider {
+        color: var(--text-light);
+        font-size: 0.9rem;
+      }
+      
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+        margin: 20px 0;
+      }
+      
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: var(--light);
+      }
+      
+      .timeline-item {
+        position: relative;
+        padding-bottom: 25px;
+      }
+      
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -34px;
+        top: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--primary);
+        border: 2px solid white;
+      }
+      
+      .timeline-date {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 5px;
+      }
+      
+      .timeline-title {
+        font-weight: 600;
+        color: var(--dark);
+        margin-bottom: 5px;
+      }
+      
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+      }
+      
+      .contact-item a {
+        color: var(--text);
         text-decoration: none;
-        font-weight: bold;
-        transition: color 0.3s ease;
+        transition: color 0.3s;
       }
-      address a:hover {
-        color: #00a2c7;
-        text-decoration: underline;
+      
+      .contact-item a:hover {
+        color: var(--primary);
       }
+      
+      .closing-statement {
+        margin-top: 30px;
+        padding: 20px;
+        background: var(--light-bg);
+        border-radius: var(--border-radius);
+        border-left: 4px solid var(--primary);
+      }
+      
+      .tab-content {
+        display: none;
+      }
+      
+      .tab-content.active {
+        display: block;
+      }
+      
+      .signature {
+        margin-top: 30px;
+        text-align: right;
+      }
+      
+      .signature img {
+        max-width: 150px;
+        margin-bottom: 10px;
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px 10px;
+        }
+        
+        header, .content-section {
+          padding: 20px;
+        }
+        
+        .profile-summary {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .profile-pic {
+          margin-right: 0;
+          margin-bottom: 15px;
+        }
+        
+        .skills-grid, .contact-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .tab-navigation {
+          overflow-x: auto;
+        }
+        
+        .tab-btn {
+          white-space: nowrap;
+        }
+      }
+
+      .print-only {
+        display: none;
+      }
+      
       @media print {
-        body { background: #fff; }
-        .download-btn { display: none; }
-        .container { box-shadow: none; }
+        body {
+          background: white;
+        }
+        
+        .top-bar, .tab-navigation {
+          display: none;
+        }
+        
+        .container {
+          box-shadow: none;
+          margin: 0;
+          max-width: 100%;
+        }
+        
+        .tab-content {
+          display: block !important;
+        }
+        
+        .print-only {
+          display: block;
+          margin: 20px 0;
+          border-top: 1px solid #ddd;
+          padding-top: 20px;
+        }
+
+        .page-break {
+          page-break-before: always;
+        }
       }
     </style>
   </head>
   <body>
-    <button class="download-btn" aria-label="Download PDF" id="downloadBtn">Download PDF</button>
-    <div class="container" id="letter" role="document">
+          <div class="top-bar">
+      <h2>Stephen Gichuhi - Internship Application</h2>
+      <div class="action-buttons">
+        <a href="https://cv-hq9l.onrender.com/" target="_blank" class="btn btn-accent"><i class="fas fa-file-alt"></i> View CV</a>
+        <button class="btn" id="downloadBtn"><i class="fas fa-download"></i> Download PDF</button>
+        <button class="btn btn-secondary" id="printBtn"><i class="fas fa-print"></i> Print</button>
+      </div>
+    </div>
+    
+    <div class="container" id="application">
       <header>
-        <h1>Application for Industrial Internship</h1>
+        <h1>Industrial Internship Application</h1>
+        <p>Computer Science Student | Web Developer</p>
       </header>
-      <main>
-        <section class="section">
+      
+      <div class="profile-summary">
+        <div class="profile-pic">SG</div>
+        <div class="profile-details">
+          <h2>Stephen Gichuhi</h2>
+          <p>Diploma in Computer Science | Zetech University</p>
+          <p>Expected Graduation: December 2025</p>
+        </div>
+      </div>
+      
+      <div class="tab-navigation">
+        <button class="tab-btn active" data-tab="cover-letter">Cover Letter</button>
+        <button class="tab-btn" data-tab="skills">Skills & Expertise</button>
+        <button class="tab-btn" data-tab="training">Training & Certifications</button>
+        <button class="tab-btn" data-tab="education">Education</button>
+        <button class="tab-btn" data-tab="contact">Contact Information</button>
+      </div>
+      
+      <!-- Quick navigation for each section within tabs -->
+      <div class="quick-nav">
+        <a href="#cover-letter-section">Cover Letter</a>
+        <a href="#technical-skills">Technical Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#projects">Projects</a>
+        <a href="#education-background">Education</a>
+        <a href="#contact-info">Contact</a>
+      </div>
+      
+      <div class="tab-content active" id="cover-letter">
+        <div class="content-section">
+          <h2 class="section-title section-anchor" id="cover-letter-section"><i class="fas fa-envelope"></i> Cover Letter</h2>
+          
           <p>Dear Hiring Manager,</p>
 
           <p>
-            I am writing to express my interest in an industrial internship opportunity at your esteemed organization. My name is <span class="highlight">Stephen Gichuhi</span>, a dedicated student pursuing a Diploma in Computer Science at Zetech University, Nairobi, with an expected graduation date of December 2025.
+            I am writing to express my interest in an industrial internship opportunity at your esteemed organization. As a dedicated student pursuing a Diploma in Computer Science at Zetech University, Nairobi, I am eager to apply my academic knowledge and practical skills in a professional environment.
           </p>
 
           <p>
-            Throughout my academic journey, I have gained a solid foundation in Software Engineering, Computer Networks, Database Management, Operating Systems, and Systems Analysis and Design. I have practical experience building web applications using HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB, complemented by Tailwind CSS for frontend styling and JWT-based authentication.
+            Throughout my academic journey, I have gained a solid foundation in <span class="highlight">Software Engineering</span>, <span class="highlight">Computer Networks</span>, <span class="highlight">Database Management</span>, <span class="highlight">Operating Systems</span>, and <span class="highlight">Systems Analysis and Design</span>. My coursework has equipped me with both theoretical knowledge and hands-on experience that I believe would be valuable to your team.
           </p>
 
           <p>
-            I have completed training programs including Cisco IT Essentials (Cisco Networking Academy), Python for Beginners (Coursera), and Fullstack Web Development (freeCodeCamp & Udemy), which enhanced my collaborative and problem-solving abilities.
+            In practical terms, I have developed strong capabilities in building web applications using <span class="highlight">HTML</span>, <span class="highlight">CSS</span>, <span class="highlight">JavaScript</span>, <span class="highlight">React.js</span>, <span class="highlight">Node.js</span>, <span class="highlight">Express.js</span>, and <span class="highlight">MongoDB</span>. I've also gained proficiency with <span class="highlight">Tailwind CSS</span> for frontend styling and implementing secure authentication using <span class="highlight">JWT</span> tokens.
           </p>
 
           <p>
-            I am eager to apply my skills in a real-world setting and contribute meaningfully to your projects, especially in full-stack development and system support. An internship at your organization would be an invaluable opportunity for professional growth and learning from experienced industry practitioners.
+            My participation in training programs including <span class="highlight">Advanced Web Development Masterclass</span> (Udemy), <span class="highlight">Cisco IT Essentials</span> (Cisco Networking Academy), <span class="highlight">Python for Beginners</span> (Coursera), and <span class="highlight">Fullstack Web Development</span> (freeCodeCamp & Udemy) has further enhanced my technical skills while developing my ability to collaborate effectively and solve complex problems.
           </p>
 
           <p>
-            Thank you for considering my application. I look forward to the possibility of contributing to your team and discussing how my background aligns with your goals.
+            I am particularly interested in applying my skills in areas such as full-stack development and system support, and I am confident that I can contribute meaningfully to your projects while expanding my knowledge under the guidance of experienced professionals. An internship at your organization would provide me with invaluable industry exposure and the opportunity to apply my academic learning in real-world scenarios.
           </p>
 
-          <address>
-            Sincerely,<br />
-            <span class="highlight">Stephen Gichuhi</span><br />
-            📞 <a href="tel:+254759794221">+254 759 794 221</a><br />
-            📧 <a href="mailto:stevegichuhi03@gmail.com">stevegichuhi03@gmail.com</a><br />
-            📍 Nairobi, Kenya
-          </address>
-        </section>
-      </main>
-    </div>
+          <p>
+            Thank you for considering my application. I am excited about the possibility of joining your team and would welcome the opportunity to discuss how my background and enthusiasm align with your organization's needs and objectives.
+          </p>
 
-    <script>
-      document.getElementById('downloadBtn').addEventListener('click', function() {
-        const element = document.getElementById('letter');
-        const opt = {
-          margin:       0.5,
-          filename:     'Stephen_Gichuhi_Internship_Letter.pdf',
-          image:        { type: 'jpeg', quality: 0.98 },
-          html2canvas:  { scale: 2, useCORS: true },
-          jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-        };
-        html2pdf().set(opt).from(element).save();
-      });
-    </script>
-  </body>
-</html>
+          <div class="closing-statement">
+            I am available for an interview at your convenience and would be delighted to provide any additional information you may require to support my application.
+          </div>
+          
+          <div class="signature">
+            <p>Sincerely,</p>
+            <h3>Stephen Gichuhi</h3>
+            <p>Computer Science Student</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="skills">
+        <div class="content-section">
+          <h2 class="section-title section-anchor" id="technical-skills"><i class="fas fa-code"></i> Technical Skills</h2>
+          
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-html5"></i></div>
+              <div>HTML5</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+              <div>CSS3</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-js"></i></div>
+              <div>JavaScript</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-react"></i></div>
+              <div>React.js</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-node-js"></i></div>
+              <div>Node.js</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-server"></i></div>
+              <div>Express.js</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <div>MongoDB</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fab fa-python"></i></div>
+              <div>Python</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-tachometer-alt"></i></div>
+              <div>Tailwind CSS</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-key"></i></div>
+              <div>JWT Authentication</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-shopping-cart"></i></div>
+              <div>E-commerce Development</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-mobile-alt"></i></div>
+              <div>Responsive Design</div>
+            </div>
+          </div>
+          
+          <h2 class="section-title"><i class="fas fa-laptop-code"></i> Academic Competencies</h2>
+          
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-cogs"></i></div>
+              <div>Software Engineering</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-network-wired"></i></div>
+              <div>Computer Networks</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-database"></i></div>
+              <div>Database Management</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-desktop"></i></div>
+              <div>Operating Systems</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+              <div>Systems Analysis</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-sitemap"></i></div>
+              <div>Network Configuration</div>
+            </div>
+          </div>
+          
+          <h2 class="section-title"><i class="fas fa-user-check"></i> Soft Skills</h2>
+          
+          <div class="skills-grid">
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-users"></i></div>
+              <div>Team Collaboration</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-comments"></i></div>
+              <div>Communication</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+              <div>Project Management</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+              <div>Problem Solving</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-clock"></i></div>
+              <div>Time Management</div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-icon"><i class="fas fa-book"></i></div>
+              <div>Continuous Learning</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="training">
+        <div class="content-section">
+          <h2 class="section-title section-anchor" id="certifications"><i class="fas fa-certificate"></i> Training & Certifications</h2>
+          
+          <div class="training-item">
+            <div class="training-header">
+              <h3 class="training-title">Advanced Web Development Masterclass</h3>
+              <span class="training-provider">Udemy</span>
+            </div>
+            <p>Comprehensive course covering modern web development practices, including Progressive Web Apps, performance optimization, and advanced JavaScript techniques. Created multiple full-stack applications with modern frameworks and libraries.</p>
+            <div class="training-skills">
+              <strong>Skills acquired:</strong> Modern JavaScript (ES6+), React hooks, Context API, Redux, GraphQL, Performance optimization techniques
+            </div>
+          </div>
+          
+          <div class="training-item">
+            <div class="training-header">
+              <h3 class="training-title">Cisco IT Essentials</h3>
+              <span class="training-provider">Cisco Networking Academy</span>
+            </div>
+            <p>Comprehensive training covering PC hardware and software, networking concepts, mobile devices, security, and troubleshooting. Developed skills in computer assembly, installation, configuration, and maintenance.</p>
+            <div class="training-skills">
+              <strong>Skills acquired:</strong> Hardware diagnostics, OS installation, Network configuration, Security practices, IT professional skills
+            </div>
+          </div>
+          
+          <div class="training-item">
+            <div class="training-header">
+              <h3 class="training-title">Python for Beginners</h3>
+              <span class="training-provider">Coursera</span>
+            </div>
+            <p>Foundational course covering Python programming fundamentals, data structures, and basic algorithms. Completed practical projects demonstrating proficiency in scripting and automation.</p>
+            <div class="training-skills">
+              <strong>Skills acquired:</strong> Python syntax, Data manipulation, File handling, Basic algorithms, Command-line applications
+            </div>
+          </div>
+          
+          <div class="training-item">
+            <div class="training-header">
+              <h3 class="training-title">Fullstack Web Development</h3>
+              <span class="training-provider">freeCodeCamp & Udemy</span>
+            </div>
+            <p>Comprehensive training in modern web development encompassing frontend and backend technologies. Built multiple projects including responsive websites, single-page applications, and RESTful APIs.</p>
+            <div class="training-skills">
+              <strong>Skills acquired:</strong> HTML/CSS/JavaScript, React.js, Node.js/Express.js, MongoDB, RESTful API design, Authentication and Authorization
+            </div>
+          </div>
+          
+          <h2 class="section-title section-anchor" id="projects"><i class="fas fa-project-diagram"></i> Projects</h2>
+          
+          <div class="timeline">
+          <div class="timeline-item">
+              <div class="timeline-date">January 2025 - Present</div>
+              <h3 class="timeline-title">E-commerce Platform Development</h3>
+              <p>Currently developing a comprehensive e-commerce platform with product catalog, shopping cart functionality, secure payment processing, and user account management. Implementing best practices for security and performance optimization.</p>
+              <p><strong>Technologies used:</strong> React.js, Node.js, Express.js, MongoDB, Stripe API, JWT Authentication</p>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">March 2024 - April 2024</div>
+              <h3 class="timeline-title">Personal Portfolio Website</h3>
+              <p>Designed and developed a responsive personal portfolio website using React.js and Tailwind CSS to showcase projects and skills. Implemented animations and responsive design for optimal viewing on all devices.</p>
+              <p><strong>Technologies used:</strong> React.js, Tailwind CSS, JavaScript, Responsive Design</p>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">January 2024 - February 2024</div>
+              <h3 class="timeline-title">Task Management Application</h3>
+              <p>Built a full-stack task management application with user authentication, task creation, categorization, and filtering capabilities. Implemented JWT-based authentication and MongoDB for data persistence.</p>
+              <p><strong>Technologies used:</strong> React.js, Node.js, Express.js, MongoDB, JWT</p>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">November 2023 - February 2024</div>
+              <h3 class="timeline-title">Network Configuration Simulator</h3>
+              <p>Developed a network configuration simulator as part of a coursework project. The application allowed users to design virtual networks and simulate data packet routing.</p>
+              <p><strong>Technologies used:</strong> Python, Tkinter, Networking principles</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="education">
+        <div class="content-section">
+          <h2 class="section-title section-anchor" id="education-background"><i class="fas fa-graduation-cap"></i> Educational Background</h2>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">September 2023 - Present (Expected graduation: December 2025)</div>
+              <h3 class="timeline-title">Diploma in Computer Science</h3>
+              <p><strong>Institution:</strong> Zetech University, Nairobi, Kenya</p>
+              <p><strong>Relevant Coursework:</strong></p>
+              <ul>
+                <li>Software Engineering Principles</li>
+                <li>Computer Networks and Security</li>
+                <li>Database Design and Management</li>
+                <li>Web Application Development</li>
+                <li>Operating Systems</li>
+                <li>Systems Analysis and Design</li>
+                <li>Programming Fundamentals</li>
+                <li>Data Structures and Algorithms</li>
+                <li>UI/UX Design Principles</li>
+                <li>Mobile Application Development</li>
+              </ul>
+            </div>
+          </div>
+          
+          <h2 class="section-title"><i class="fas fa-book-open"></i> Academic Achievements</h2>
+          
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">October 2024</div>
+              <h3 class="timeline-title">Dean's List Recognition</h3>
+              <p>Recognized for outstanding academic performance, maintaining excellent academic record for consecutive semesters.</p>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">December 2024</div>
+              <h3 class="timeline-title">Outstanding Project Recognition</h3>
+              <p>Received recognition for developing an innovative e-commerce solution as part of a team project, demonstrating exceptional technical skills and collaboration abilities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-content" id="contact">
+        <div class="content-section">
+          <h2 class="section-title section-anchor" id="contact-info"><i class="fas fa-address-card"></i> Contact Information</h2>
+          
+          <div class="contact-grid">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <strong>Phone</strong><br>
+                <a href="tel:+254759794221">0759794221</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <strong>Email</strong><br>
+                <a href="mailto:stevegichuhi03@gmail.com">stevegichuhi03@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <strong>Location</strong><br>
+                Nairobi, Kenya
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div>
+                <strong>LinkedIn</strong><br>
+                <a href="#" target="_blank">Stephen Gichuhi</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fab fa-github"></i>
+              </div>
+              <div>
+                <strong>GitHub</strong><br>
+                <a href="#" target="_blank">stevegichuhi</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-file-alt"></i>
+              </div>
+              <div>
+                <strong>Online CV</strong><br>
+                <a href="https://cv-hq9l.onrender.com/" target="_blank">View Complete CV</a>
+              </div>
+            </div>
+          </div>
+          
+          <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Availability</h2>
+          
+          <p>I am available for an internship starting immediately with flexible hours. My preferred duration is 3-6 months, and I am open to both remote and on-site opportunities within Nairobi.</p>
+          
+          <div class="closing-statement">
+            <p>Thank you for considering my application. I look forward to the opportunity to discuss my qualifications further and how I can contribute to your organization.</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Print-only section that shows all content when printing -->
+      <div class="print-only">
+        <div class="content-section">
+          <h2 class="section-title">Skills & Expertise</h>
+
+            <script>
+              document.addEventListener('DOMContentLoaded', () => {
+                // --- Tab navigation wiring ---
+                const tabBtns     = document.querySelectorAll('.tab-btn');
+                const tabContents = document.querySelectorAll('.tab-content');
+            
+                tabBtns.forEach(btn => {
+                  btn.addEventListener('click', () => {
+                    // Remove 'active' from all buttons/content
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+            
+                    // Add 'active' to the clicked button...
+                    btn.classList.add('active');
+                    // ...and its corresponding content pane
+                    const targetId = btn.getAttribute('data-tab');
+                    document.getElementById(targetId).classList.add('active');
+                  });
+                });
+            
+                // --- PDF download wiring ---
+                const downloadBtn = document.getElementById('downloadBtn');
+                const appElement  = document.getElementById('application');
+            
+                downloadBtn.addEventListener('click', () => {
+                  const opt = {
+                    margin:      0.5,
+                    filename:    'Stephen_Gichuhi_Internship_Application.pdf',
+                    image:       { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2 },
+                    jsPDF:       { unit: 'in', format: 'a4', orientation: 'portrait' }
+                  };
+                  html2pdf().set(opt).from(appElement).save();
+                });
+            
+                // --- Print wiring ---
+                const printBtn = document.getElementById('printBtn');
+                printBtn.addEventListener('click', () => window.print());
+              });
+            </script>
+            </body>
+            </html>
+            
